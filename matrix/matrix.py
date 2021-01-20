@@ -17,6 +17,7 @@ class Matrix:
 
     def column(self, index):
         mat_col = []
-        for i in range(index-1, len(self.mat), self.ncols):
+        for i in range(index-1, (index)+((self.nrows-1)*self.ncols), self.ncols):
             mat_col.append(int(self.mat[i]))
         return mat_col
+
