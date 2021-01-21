@@ -1,18 +1,13 @@
-import string, regex
+import string
+from collections import Counter
 
 def count_words(sentence):
-    counts = dict()
-    words = regex.split(r'[_ ,\n\t]+', sentence.lower())
+    punc_without_apostrophe = string.punctuation.replace("\'","")
+
+    # deletes all non-apostrophe punctuation
+    sentence = sentence.translate(str.maketrans(punc_without_apostrophe,' '*len(punc_without_apostrophe)))
     
-    
-    for word in words:
-        word = word.strip(string.punctuation)
-        if word in counts:
-            counts[word] += 1 
-        else:
-            counts[word] = 1
-    
-    if '' in counts.keys():
-        return {k: v for k, v in counts.items() if k is not ''}
-    else:
-        return counts
+    # count words in split sentence, trimming off the apostrophe characters from the start and end if they exist 
+    counts = Counter([word.strip("'") for word in sentence.lower().split()])
+
+    return counts
