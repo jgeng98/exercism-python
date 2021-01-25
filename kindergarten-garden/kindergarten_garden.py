@@ -1,7 +1,9 @@
 class Garden:
-    def __init__(self, diagram, students=None):
-        default_names = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
-        self.students = sorted(sorted) if students is not None else default_names
+
+    default_names = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
+    
+    def __init__(self, diagram, students=default_names):
+        self.students = sorted(students)
         self.diagram = diagram.split("\n")
 
     def plants(self, name):
