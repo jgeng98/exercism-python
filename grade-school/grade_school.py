@@ -1,12 +1,18 @@
+from collections import defaultdict
+
 class School:
     def __init__(self):
-        pass
+        self.school = defaultdict(list)
 
     def add_student(self, name, grade):
-        pass
+        self.school[grade].append(name)
+        self.school[grade].sort()
 
     def roster(self):
-        pass
+        roster = []
+        for grade in sorted(self.school.keys()):
+            roster.extend(self.school.get(grade))
+        return roster
 
     def grade(self, grade_number):
-        pass
+        return self.school[grade_number]
