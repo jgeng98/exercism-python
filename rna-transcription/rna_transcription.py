@@ -1,2 +1,4 @@
+import string
+
 def to_rna(dna_strand):
-    pass
+    return dna_strand.translate(dna_strand.maketrans("GCTA", "CGAU"))
