@@ -2,10 +2,10 @@ import regex
 
 def is_valid(isbn):
     # verify that if a check digit exists, it must be in the correct spot
-    if 'X' in isbn and isbn[len(isbn)-1] != 'X':
+    if 'X' in isbn and not isbn.endswith('X'):
         return False
     
-    # substitute everything that isn't a digit or 'X' with nothing
+    # substitute everything that isn't a digit or a 'X' with nothing
     isbn = regex.sub(r'[^0-9X]', '', isbn)
 
     # if the resulting string length isn't 10, immediately return false
