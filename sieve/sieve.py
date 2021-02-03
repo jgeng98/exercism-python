@@ -10,23 +10,10 @@ def primes(limit):
         # set the flag for that key to be True (since we now know that it's prime)
         nums[prime[0]] = True
 
-        # start checking the rest of the dictionary starting with the number after the one we just checked to be prime
-        for keys in range(prime[0] + 1, limit + 1):
-            # if the number has already been checked to be composite, skip it
-            if nums.get(keys) == False:
-                continue
-
-            # if the number is a multiple of the prime we're checking, set the flag to be False
-            if isMultiple(keys, prime[0]) == True:
-                nums[keys] = False
+        # check the rest of the dictionary, starting at 2*prime[0] and incrementing by prime[0] each time
+        # all those numbers will be a multiple of prime[0] by definition, so we can set their values to be False
+        for keys in range(prime[0] * 2, limit + 1, prime[0]):
+            nums[keys] = False
 
     # return the list consisting of only the keys with the value True
     return [keys for keys in nums.keys() if nums.get(keys) == True]
-
-
-def isMultiple(num_to_check, prime):
-    while num_to_check > 0:
-        num_to_check -= prime
-
-    return num_to_check == 0
-
