@@ -55,15 +55,15 @@ def break_into_thousands(number):
 
 
 def hundreds(number):
-    if len(str(number)) == 1 or len(str(number)) == 2:
+    if number < 100:
         return zero_to_ninetynine(number)
     elif number % 100 == 0:
-        return zero_to_ninetynine(int(str(number)[0])) + " hundred"
+        return zero_to_ninetynine(number // 100) + " hundred"
     else:
         return (
-            zero_to_ninetynine(int(str(number)[0]))
+            zero_to_ninetynine(number // 100)
             + " hundred "
-            + zero_to_ninetynine(int(str(number)[1:3]))
+            + zero_to_ninetynine(number % 100)
         )
 
 
@@ -71,17 +71,15 @@ def insert_scale_word(list_of_thousands):
     if len(list_of_thousands) > 4:
         raise ValueError("The number you entered is outside the allowed range.")
 
-    scales = {0: "", 1: " thousand", 2: " million", 3: " billion"}
-    scaled = []
+    scales = {0: "", 1: " thousand ", 2: " million ", 3: " billion "}
+    scaled = ""
 
     for i in range(0, len(list_of_thousands)):
         if list_of_thousands[i] == 0:
             continue
-        scaled.append(hundreds(list_of_thousands[i]) + scales.get(i))
+        scaled = hundreds(list_of_thousands[i]) + scales.get(i) + scaled
 
-    scaled.reverse()
-
-    return " ".join(scaled)
+    return scaled.strip()
 
 
 def say(number):
