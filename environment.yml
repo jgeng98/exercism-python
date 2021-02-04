@@ -7,3 +7,4 @@ dependencies:
   - pytest
   - regex
   - numpy
+  - num2words
