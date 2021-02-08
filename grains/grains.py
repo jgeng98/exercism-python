@@ -3,8 +3,8 @@ def square(number):
         raise ValueError(
             f"It doesn't make sense to calculate the number of grains given on square {number} of a 64-square chessboard."
         )
-    return 2 ** (number - 1)
+    return 1 << (number - 1)
 
 
 def total():
-    return sum([2 ** i for i in range(64)])
+    return (1 << 64) - 1
