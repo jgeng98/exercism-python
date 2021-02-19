@@ -1,3 +1,6 @@
+# update environment:
+# conda env update --prefix ./condaenv --file environment.yml  --prune
+
 channels:
   - defaults
   - conda-forge
@@ -10,4 +13,4 @@ dependencies:
   - numpy
   - num2words
   - ipython
-  
+  - toolz
