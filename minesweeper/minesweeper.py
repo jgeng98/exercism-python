@@ -18,8 +18,8 @@ def annotate(minefield):
         raise ValueError("Invalid characters in minefield.")
 
     new_board = np.empty(shape=(rows, cols), dtype=np.str_)
-    for row in range(len(new_board)):
-        for col in range(len(new_board[0])):
+    for row in range(rows):
+        for col in range(cols):
             new_board[row, col] = sum_mines(minefield, row, col)
 
     return list(map("".join, new_board))
